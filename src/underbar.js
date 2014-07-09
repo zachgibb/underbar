@@ -118,7 +118,7 @@ var _ = {};
       };
 
     });
-    
+
   };
 
 
@@ -127,6 +127,13 @@ var _ = {};
     // map() is a useful primitive iteration function that works a lot
     // like each(), but in addition to running the operation on all
     // the members, it also maintains an array of results.
+    var result = []; // an array of returned results
+
+    _.each(collection, function(value) { // for each value in the given array,
+      result.push(iterator(value)); // push the result of the iterator function to the 'result' array
+    });
+
+    return result; // return the 'result' array
   };
 
   /*

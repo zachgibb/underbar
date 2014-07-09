@@ -72,7 +72,7 @@ var _ = {};
     _.each(array, function(item, index) {
       if (item === target && result === -1) {
         result = index;
-      }
+      };
     });
 
     return result;
@@ -100,12 +100,25 @@ var _ = {};
         return true;
       } else {
         return false;
-      }
+      };
     });
   };
 
   // Produce a duplicate-free version of the array.
-  _.uniq = function(array) {
+  _.uniq = function(array) { 
+    var unique = []; // an array for all the unique elements
+
+    return _.filter(array, function(element) { // my goal is to return an array of unique elements using _.filter
+
+      if (_.indexOf(unique, element) === -1) { // if each element in the array is not already in the "unique" array, 
+        unique.push(element); // add the element to the 'unique array'
+        return true; // add the element to the array _.filter returns
+      } else { // if an element is already in the unique array, 
+        return false; //do not add the elent to the array that _.filter returns
+      };
+
+    });
+    
   };
 
 

@@ -255,11 +255,11 @@ var _ = {};
   _.extend = function(obj) {
     var result = arguments[0];
 
-    _.each(arguments, function (value, prop, collection) {
+    _.each(arguments, function (value, prop, collection) { 
 
-      if (prop != 0){
+      if (prop != 0){ // if is not the first argument,
 
-        _.each(value, function (value2, prop2, collection2) {
+        _.each(value, function (value2, prop2, collection2) { // add each key and value to the returned result
           result[prop2] = value2;
         });
 
@@ -273,6 +273,30 @@ var _ = {};
   // Like extend, but doesn't ever overwrite a key that already
   // exists in obj
   _.defaults = function(obj) {
+    var result = arguments[0];
+    var resultKeys = {};
+
+    _.each(arguments, function (value, prop, collection) {
+
+      if (prop == 0) { // if is the first argument,
+
+         _.each(value, function (value2, prop2, collection2) {
+          resultKeys[prop2] = prop2; // add each key to an object of original keys
+        });
+
+      } else if (prop != 0){ // if is not the first object,
+
+        _.each(value, function (value2, prop2, collection2) {
+          if (!_.contains(resultKeys, prop2)) {  // and if the current key is an original key,
+
+            result[prop2] = value2; // add the key and value to the first object
+            resultKeys[prop2] = prop2; // add the key to the object of original keys
+
+          };
+        });
+      };
+    });
+    return result;
   };
 
 

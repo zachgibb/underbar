@@ -338,6 +338,19 @@ var _ = {};
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+    var argArray = [];
+    var result;
+
+    return function() {
+      console.log(arguments)
+      if ( !_.contains(argArray, arguments[0])) {
+        console.log(arguments)
+        result = func.apply(this, arguments);
+        argArray.push(arguments[0]);
+      }
+      
+      return result;
+    };
   };
 
   // Delays a function for the given number of milliseconds, and then calls

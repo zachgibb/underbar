@@ -347,7 +347,7 @@ var _ = {};
 
         result = func.apply(this, arguments);
         argArray.push(arguments[0]);
-        
+
       }
       
       return result;

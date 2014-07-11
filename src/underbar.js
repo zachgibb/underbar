@@ -361,7 +361,7 @@ var _ = {};
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
-    
+
     if(arguments.length > 2) {
       var args = Array.prototype.slice.call(arguments);
       args = args.slice(2);
@@ -383,6 +383,14 @@ var _ = {};
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+    var sliced = array.slice();
+    var returnMe = [];
+    for (var i = 0; i != sliced.length; i++) {
+      returnMe.splice(Math.floor(Math.random() * returnMe.length), 0, sliced[i]);
+    };
+    console.log(sliced);
+    console.log(returnMe);
+    return returnMe;
   };
 
 

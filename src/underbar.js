@@ -386,10 +386,9 @@ var _ = {};
     var sliced = array.slice();
     var returnMe = [];
     for (var i = 0; i != sliced.length; i++) {
-      returnMe.splice(Math.floor(Math.random() * returnMe.length), 0, sliced[i]);
+      returnMe.splice(Math.floor(Math.random() * returnMe.length), 0, sliced[i]); // add each number of the original array to the returned array at a random index point
     };
-    console.log(sliced);
-    console.log(returnMe);
+
     return returnMe;
   };
 
